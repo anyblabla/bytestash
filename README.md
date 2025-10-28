@@ -44,3 +44,7 @@ Les fragments de code sont organisés par langage ou par sujet pour une navigati
 
 ### À propos de ByteStash
 L'application **ByteStash** est une solution de gestion de fragments de code auto-hébergée (écrite en React et Node.js). Ce dépôt contient le *contenu* de l'instance de l'utilisateur, et non le code source de l'application elle-même.
+
+### 📝 **Licence**
+
+Ce projet est sous licence GNU GPL (v2.0).
