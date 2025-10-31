@@ -1,0 +1,64 @@
+# Whoogle compose
+
+Fichier "docker-compose.yml" à utiliser pour déployer Whoogle via Docker.
+
+• docker
+• yml
+• whoogle
+• research
+• search
+• compose
+
+```yaml
+# Modifications apportées par Blabla Linux : https: //link.blablalinux.be
+services:
+  whoogle-search:
+    image: benbusby/whoogle-search:latest
+    container_name: whoogle-search
+    restart: always
+    pids_limit: 50
+    mem_limit: 256mb
+    memswap_limit: 256mb
+    # user debian-tor from tor package
+    user: whoogle
+    security_opt:
+      - no-new-privileges
+    cap_drop:
+      - ALL
+    tmpfs:
+      - /config/:size=10M,uid=927,gid=927,mode=1700
+      - /var/lib/tor/:size=15M,uid=927,gid=927,mode=1700
+      - /run/tor/:size=1M,uid=927,gid=927,mode=1700
+    environment: # Uncomment to configure environment variables
+      # Country and language for interface and search
+      #- WHOOGLE_CONFIG_COUNTRY=FR
+      - WHOOGLE_CONFIG_LANGUAGE=lang_fr
+      #- WHOOGLE_CONFIG_SEARCH_LANGUAGE=lang_fr
+      # Enable (1) / Disable (0) autocomplete
+      - WHOOGLE_AUTOCOMPLETE=1
+      # Basic auth configuration, uncomment to enable
+      #- WHOOGLE_USER=<auth username>
+      #- WHOOGLE_PASS=<auth password>
+      # Proxy configuration, uncomment to enable
+      #- WHOOGLE_PROXY_USER=<proxy username>
+      #- WHOOGLE_PROXY_PASS=<proxy password>
+      #- WHOOGLE_PROXY_TYPE=<proxy type (http|https|socks4|socks5)
+      #- WHOOGLE_PROXY_LOC=<proxy host/ip>
+      # Site alternative configurations, uncomment to enable
+      # Note: If not set, the feature will still be available
+      # with default values.
+      #- WHOOGLE_ALT_TW=farside.link/nitter
+      #- WHOOGLE_ALT_YT=farside.link/invidious
+      #- WHOOGLE_ALT_IG=farside.link/bibliogram/u
+      #- WHOOGLE_ALT_RD=farside.link/libreddit
+      #- WHOOGLE_ALT_MD=farside.link/scribe
+      #- WHOOGLE_ALT_TL=farside.link/lingva
+      #- WHOOGLE_ALT_IMG=farside.link/rimgo
+      #- WHOOGLE_ALT_WIKI=farside.link/wikiless
+      #- WHOOGLE_ALT_IMDB=farside.link/libremdb
+      #- WHOOGLE_ALT_QUORA=farside.link/quetre
+    #env_file: # Alternatively, load variables from whoogle.env
+      #- whoogle.env
+    ports:
+      - 5000:5000
+```
