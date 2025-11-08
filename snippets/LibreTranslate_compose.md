@@ -33,9 +33,9 @@ services:
 	    #- LT_FRONTEND_LANGUAGE_SOURCE
       #- LT_FRONTEND_LANGUAGE_TARGET
       #- LT_FRONTEND_TIMEOUT
-      - LT_FRONTEND_TITLE=Blabla Linux
-      - LT_GA_ID=G-R84Z64ZJX9
-      - LT_GET_API_KEY_LINK=https://blablalinux.be/contact/
+      - LT_FRONTEND_TITLE=
+      - LT_GA_ID=
+      - LT_GET_API_KEY_LINK=
       #- LT_HOST
       #- LT_LOAD_ONLY=en,fr
       #- LT_METRICS
