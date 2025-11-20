@@ -30,6 +30,8 @@ MENU="
  [9] 📅 Modifier le schedule aléatoire (14h-20h, min multiples de 5)
  [10] 📅 Fixer le même schedule pour tous (6 champs, Spring Cron)
  [11] ✏️  Modifier WATCHTOWER_TIMEOUT
+ [12] 🖼️  Modifier l'image Docker (ex: containrrr/watchtower:latest)
+ [13] 🧹 Nettoyer toutes les images non utilisées (docker image prune -a)
  [Q] ❌ Quitter
 "
 
@@ -112,7 +114,8 @@ view_compose() {
         compose_file=$(find_watchtower_compose "$lxc_id")
         echo "→ LXC $lxc_id"
         if [ -n "$compose_file" ]; then
-            pct exec "$lxc_id" -- sh -c "grep -E 'restart:|WATCHTOWER_NO_STARTUP_MESSAGE|WATCHTOWER_CLEANUP|WATCHTOWER_SCHEDULE|WATCHTOWER_TIMEOUT' $compose_file"
+            # Ajout de 'image:' au grep pour voir l'image utilisée
+            pct exec "$lxc_id" -- sh -c "grep -E 'image:|restart:|WATCHTOWER_NO_STARTUP_MESSAGE|WATCHTOWER_CLEANUP|WATCHTOWER_SCHEDULE|WATCHTOWER_TIMEOUT' $compose_file"
         else
             echo "Pas de docker-compose.yml trouvé ou recherche expirée pour LXC $lxc_id."
         fi
@@ -207,6 +210,52 @@ fixed_schedule() {
     modify_key_restart "WATCHTOWER_SCHEDULE" "$schedule"
 }
 
+# Nouvelle fonction pour modifier l'image Docker
+set_watchtower_image() {
+    read -rp "Entrez la nouvelle image Docker (ex: containrrr/watchtower:latest): " new_image
+    if [ -z "$new_image" ]; then
+        echo "❌ Image vide. Annulation."
+        read -rp "Appuyez sur [Entrée] pour revenir au menu..."
+        return
+    fi
+
+    for lxc_id in $(get_running_docker_lxc); do
+        compose_file=$(find_watchtower_compose "$lxc_id")
+
+        if [ -n "$compose_file" ]; then
+            # Utilisation de # comme délimiteur dans sed pour gérer les / dans le nom de l'image.
+            pct exec "$lxc_id" -- sed -i "s#^[[:space:]]*image: .*#    image: $new_image#" "$compose_file"
+
+            dir=$(dirname "$compose_file")
+            # Down et Up pour forcer le pull de la nouvelle image
+            pct exec "$lxc_id" -- sh -c "cd $dir && docker compose down && docker compose up -d"
+            echo "✅ Image Watchtower mise à jour et conteneur redémarré dans LXC $lxc_id : $new_image"
+        else
+            echo "Pas de docker-compose.yml trouvé ou recherche expirée pour LXC $lxc_id."
+        fi
+    done
+    read -rp "Appuyez sur [Entrée] pour revenir au menu..."
+}
+
+# Nouvelle fonction pour exécuter docker image prune -a dans tous les LXC
+prune_docker_images() {
+    echo "⚠️ Attention : Ceci supprimera toutes les images Docker non utilisées dans chaque LXC."
+    read -rp "Confirmez-vous l'exécution de 'docker image prune -a' dans tous les LXC? (oui/non): " confirmation
+
+    if [[ "$confirmation" =~ ^[Oo][Uu][Ii]$ ]]; then
+        for lxc_id in $(get_running_docker_lxc); do
+            echo "→ Nettoyage des images dans LXC $lxc_id..."
+            # Utilise 'docker image prune -a -f' pour forcer sans interaction utilisateur
+            pct exec "$lxc_id" -- docker image prune -a -f
+            echo "✅ Nettoyage terminé pour LXC $lxc_id."
+        done
+    else
+        echo "Opération annulée."
+    fi
+    read -rp "Appuyez sur [Entrée] pour revenir au menu..."
+}
+
+
 # Menu principal
 while true; do
     clear
@@ -224,6 +273,8 @@ while true; do
         9) random_schedule ;;
         10) fixed_schedule ;;
         11) read -rp "Entrez la valeur pour WATCHTOWER_TIMEOUT (ex: 30s) : " val; modify_key_restart "WATCHTOWER_TIMEOUT" "$val" ;;
+        12) set_watchtower_image ;;
+        13) prune_docker_images ;;
         [Qq]) exit ;;
         *) echo "Option invalide." ; read -rp "Appuyez sur [Entrée] pour continuer..." ;;
     esac
