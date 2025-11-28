@@ -16,6 +16,9 @@ Script Cron pour mise à jour Proxmox Backup Server : Automatisez apt-get dist-u
 ```bash
 #!/bin/bash
 
+# Modifications apportées par Blabla Linux : https://link.blablalinux.be
+# Disponible sur le wiki : https://wiki.blablalinux.be/fr/update-pbs-script-gotify-cron
+
 # --- PARAMÈTRES DE GOTIFY ---
 # IMPORTANT : Remplacez ces valeurs !
 GOTIFY_URL="VOTRE_URL_GOTIFY"

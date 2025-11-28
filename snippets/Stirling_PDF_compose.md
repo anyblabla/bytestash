@@ -11,10 +11,11 @@ Fichier "docker-compose.yml" à utiliser pour déployer Stirling PDF via Docker.
 ```yaml
 # Modifications apportées par Blabla Linux : https://link.blablalinux.be
 # Page de wiki disponible à cette adresse : https://wiki.blablalinux.be/fr/docker-compose-stirling-pdf
+# Docker compose Stirling PDF V2 : https://bytestash.blablalinux.be/s/00c501cad53b05674c31e329806d987d
 services:
   stirlingpdf:
     container_name: stirlingpdf
-    image: stirlingtools/stirling-pdf:latest-fat
+    image: stirlingtools/stirling-pdf:1.6.0-fat  # Last V1 release!
     restart: always
     healthcheck:
       test:

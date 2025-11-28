@@ -12,6 +12,9 @@ Script Cron pour mise à jour Proxmox VE : Automatisez apt-get dist-upgrade et r
 ```bash
 #!/bin/bash
 
+# Modifications apportées par Blabla Linux : https://link.blablalinux.be
+# Disponible sur le wiki : https://wiki.blablalinux.be/fr/update-pve-script-gotify-cron
+
 # --- PARAMÈTRES DE GOTIFY ---
 # IMPORTANT : Remplacez ces valeurs !
 GOTIFY_URL="VOTRE_URL_GOTIFY"

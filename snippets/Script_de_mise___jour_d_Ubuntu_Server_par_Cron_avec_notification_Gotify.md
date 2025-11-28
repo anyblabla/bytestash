@@ -15,6 +15,9 @@ Script Cron pour mise à jour Ubuntu : Automatisez apt-get upgrade et snap refre
 ```bash
 #!/bin/bash
 
+# Modifications apportées par Blabla Linux : https://link.blablalinux.be
+# Disponible sur le wiki : https://wiki.blablalinux.be/fr/update-ubuntu-script-gotify-cron
+
 # --- PARAMÈTRES DE GOTIFY ---
 # IMPORTANT : Remplacez ces valeurs !
 GOTIFY_URL="VOTRE_URL_GOTIFY"

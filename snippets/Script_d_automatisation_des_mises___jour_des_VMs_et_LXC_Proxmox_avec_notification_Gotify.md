@@ -16,6 +16,9 @@ Scripts Cron pour VMs/LXC Proxmox : Automatisez la mise à jour (apt-get/snap) e
 
 ```bash
 #!/bin/bash
+
+# Modifications apportées par Blabla Linux : https://link.blablalinux.be
+# Disponible sur le wiki : https://wiki.blablalinux.be/fr/script-update-lxc-vm-gotify-proxmox
 #
 # SCRIPT : update_vms.sh
 # OBJECTIF : Mettre à jour toutes les VMs Debian/Ubuntu en cours d'exécution
@@ -73,25 +76,25 @@ do
     fi
 
     echo "--> Traitement de la VM VMID $VMID..."
-    
+
     # 1. Vérification s'il y a des mises à jour disponibles (Simulation)
     echo "    - Simulation des mises à jour..."
     APT_UPDATES_COUNT=$(/usr/sbin/qm guest exec $VMID --timeout 60 /bin/bash -- -c "$UPDATE_COMMAND_DRY_RUN" 2>/dev/null)
     APT_UPDATES_COUNT=${APT_UPDATES_COUNT//[^0-9]/} # Nettoyage de la sortie
-    
+
     # S'assurer que le compteur est un nombre
     if ! [[ "$APT_UPDATES_COUNT" =~ ^[0-9]+$ ]]; then
         APT_UPDATES_COUNT=0
     fi
 
     echo "    - $APT_UPDATES_COUNT paquets APT à mettre à jour."
-    
+
     # Vérification si des mises à jour APT sont nécessaires (on ne peut pas simuler snap facilement ici, on le laisse s'exécuter si APT a des MAJ)
     if [ "$APT_UPDATES_COUNT" -gt 0 ]; then
-        
+
         UPDATED_VMS_COUNT=$((UPDATED_VMS_COUNT + 1))
         echo "    - Exécution des mises à jour réelles..."
-        
+
         # 2. Exécution des mises à jour réelles (inclut snap refresh)
         /usr/sbin/qm guest exec $VMID --timeout 300 /bin/bash -- -c "$UPDATE_COMMAND_REAL"
 
@@ -168,6 +171,9 @@ exit 0
 
 ```bash
 #!/bin/bash
+
+# Modifications apportées par Blabla Linux : https://link.blablalinux.be
+# Disponible sur le wiki : https://wiki.blablalinux.be/fr/script-update-lxc-vm-gotify-proxmox
 #
 # SCRIPT : update_lxcs.sh
 # OBJECTIF : Mettre à jour tous les conteneurs LXC Debian/Ubuntu en cours d'exécution
@@ -233,16 +239,16 @@ do
     # Exécuter la simulation et capturer le décompte des paquets à mettre à jour
     APT_UPDATES_COUNT=$(/usr/sbin/pct exec $CTID -- bash -c "$UPDATE_COMMAND_DRY_RUN" 2>/dev/null)
     APT_UPDATES_COUNT=${APT_UPDATES_COUNT//[^0-9]/} # Nettoyage de la sortie pour ne garder que le nombre
-    
+
     if ! [[ "$APT_UPDATES_COUNT" =~ ^[0-9]+$ ]]; then
         APT_UPDATES_COUNT=0
     fi
-    
+
     echo "    - $APT_UPDATES_COUNT paquets APT à mettre à jour."
-    
+
     # 2. Exécution des mises à jour uniquement si nécessaire
     if [ "$APT_UPDATES_COUNT" -gt 0 ]; then
-        
+
         UPDATED_CT_COUNT=$((UPDATED_CT_COUNT + 1))
         echo "    - Exécution des mises à jour réelles..."
 
