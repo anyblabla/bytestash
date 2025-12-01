@@ -1,4 +1,4 @@
-# Script d'automatisation des mises à jour des VMs et LXC Proxmox avec notification Gotify
+# Script update VM LXC Proxmox avec notification Gotify
 
 Scripts Cron pour VMs/LXC Proxmox : Automatisez la mise à jour (apt-get/snap) et le redémarrage sécurisé de vos conteneurs et machines virtuelles Debian/Ubuntu. Recevez une notification détaillée via Gotify.
 

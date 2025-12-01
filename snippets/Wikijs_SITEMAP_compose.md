@@ -1,4 +1,4 @@
-# Wiki.js SITEMAP compose
+# Wikijs SITEMAP compose
 
 Fichier "docker-compose.yml" à utiliser pour déployer Wiki.js SITEMAP via Docker.
 

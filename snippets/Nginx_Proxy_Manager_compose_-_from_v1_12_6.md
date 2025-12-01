@@ -1,4 +1,4 @@
-# Nginx Proxy Manager compose (à partir de la v1.12.6)
+# Nginx Proxy Manager compose - from v1_12_6
 
 Fichier "docker-compose.yml" à utiliser pour déployer Nginx Proxy Manager via Docker.
 Compose ok à partir de la version  1.12.6 !

@@ -1,4 +1,4 @@
-# WordPress robots.txt
+# WordPress robots txt
 
 Exemple de fichier robots.txt pour WordPress. 
 Ce fichier robot.txt spécifie :
@@ -13,125 +13,238 @@ Ce fichier robot.txt spécifie :
 • ia
 
 ```plaintext
-# Modifications apportées par Blabla Linux : https://link.blablalinux.be
+# Modifications par Blabla Linux : https://link.blablalinux.be
 
 # SITEMAPS
-Sitemap: https://<VOTRE-DOMAINE>/sitemap.xml
-Sitemap: https://<VOTRE-DOMAINE>/news-sitemap.xml
+Sitemap: https://VOTRE-DOMAINE/sitemap.xml
+Sitemap: https://VOTRE-DOMAINE/news-sitemap.xml
 
-# RULES FOR SEARCH ROBOTS
+# 1. RULES FOR ARTIFICIAL INTELLIGENCE ROBOTS (BLOCKED)
+# These specific agents are explicitly disallowed from crawling the entire site.
+User-agent: AddSearchBot
+Disallow: /
+User-agent: AI2Bot
+Disallow: /
+User-agent: Ai2Bot-Dolma
+Disallow: /
+User-agent: aiHitBot
+Disallow: /
+User-agent: AmazonBuyForMe
+Disallow: /
+User-agent: atlassian-bot
+Disallow: /
+User-agent: amazon-kendra-
+Disallow: /
+User-agent: Amazonbot
+Disallow: /
+User-agent: Andibot
+Disallow: /
+User-agent: Anomura
+Disallow: /
+User-agent: anthropic-ai
+Disallow: /
+User-agent: Applebot
+Disallow: /
+User-agent: Applebot-Extended
+Disallow: /
+User-agent: Awario
+Disallow: /
+User-agent: bedrockbot
+Disallow: /
+User-agent: bigsur.ai
+Disallow: /
+User-agent: Bravebot
+Disallow: /
+User-agent: Brightbot 1.0
+Disallow: /
+User-agent: BuddyBot
+Disallow: /
+User-agent: Bytespider
+Disallow: /
+User-agent: CCBot
+Disallow: /
+User-agent: ChatGPT Agent
+Disallow: /
+User-agent: ChatGPT-User
+Disallow: /
+User-agent: Claude-SearchBot
+Disallow: /
+User-agent: Claude-User
+Disallow: /
+User-agent: Claude-Web
+Disallow: /
+User-agent: ClaudeBot
+Disallow: /
+User-agent: Cloudflare-AutoRAG
+Disallow: /
+User-agent: CloudVertexBot
+Disallow: /
+User-agent: cohere-ai
+Disallow: /
+User-agent: cohere-training-data-crawler
+Disallow: /
+User-agent: Cotoyogi
+Disallow: /
+User-agent: Crawlspace
+Disallow: /
+User-agent: Datenbank Crawler
+Disallow: /
+User-agent: DeepSeekBot
+Disallow: /
+User-agent: Devin
+Disallow: /
+User-agent: Diffbot
+Disallow: /
+User-agent: DuckAssistBot
+Disallow: /
+User-agent: Echobot Bot
+Disallow: /
+User-agent: EchoboxBot
+Disallow: /
+User-agent: FacebookBot
+Disallow: /
+User-agent: facebookexternalhit
+Disallow: /
+User-agent: Factset_spyderbot
+Disallow: /
+User-agent: FirecrawlAgent
+Disallow: /
+User-agent: FriendlyCrawler
+Disallow: /
+User-agent: Gemini-Deep-Research
+Disallow: /
+User-agent: Google-CloudVertexBot
+Disallow: /
+User-agent: Google-Extended
+Disallow: /
+User-agent: Google-Firebase
+Disallow: /
+User-agent: Google-NotebookLM
+Disallow: /
+User-agent: GoogleAgent-Mariner
+Disallow: /
+User-agent: GoogleOther
+Disallow: /
+User-agent: GoogleOther-Image
+Disallow: /
+User-agent: GoogleOther-Video
+Disallow: /
+User-agent: GPTBot
+Disallow: /
+User-agent: iaskspider/2.0
+Disallow: /
+User-agent: IbouBot
+Disallow: /
+User-agent: ICC-Crawler
+Disallow: /
+User-agent: ImagesiftBot
+Disallow: /
+User-agent: img2dataset
+Disallow: /
+User-agent: ISSCyberRiskCrawler
+Disallow: /
+User-agent: Kangaroo Bot
+Disallow: /
+User-agent: LinerBot
+Disallow: /
+User-agent: Linguee Bot
+Disallow: /
+User-agent: meta-externalagent
+Disallow: /
+User-agent: Meta-ExternalAgent
+Disallow: /
+User-agent: meta-externalfetcher
+Disallow: /
+User-agent: Meta-ExternalFetcher
+Disallow: /
+User-agent: meta-webindexer
+Disallow: /
+User-agent: MistralAI-User
+Disallow: /
+User-agent: MistralAI-User/1.0
+Disallow: /
+User-agent: MyCentralAIScraperBot
+Disallow: /
+User-agent: netEstate Imprint Crawler
+Disallow: /
+User-agent: NovaAct
+Disallow: /
+User-agent: OAI-SearchBot
+Disallow: /
+User-agent: omgili
+Disallow: /
+User-agent: omgilibot
+Disallow: /
+User-agent: OpenAI
+Disallow: /
+User-agent: Operator
+Disallow: /
+User-agent: PanguBot
+Disallow: /
+User-agent: Panscient
+Disallow: /
+User-agent: panscient.com
+Disallow: /
+User-agent: Perplexity-User
+Disallow: /
+User-agent: PerplexityBot
+Disallow: /
+User-agent: PetalBot
+Disallow: /
+User-agent: PhindBot
+Disallow: /
+User-agent: Poseidon Research Crawler
+Disallow: /
+User-agent: QualifiedBot
+Disallow: /
+User-agent: QuillBot
+Disallow: /
+User-agent: quillbot.com
+Disallow: /
+User-agent: SBIntuitionsBot
+Disallow: /
+User-agent: Scrapy
+Disallow: /
+User-agent: SemrushBot-OCOB
+Disallow: /
+User-agent: SemrushBot-SWA
+Disallow: /
+User-agent: ShapBot
+Disallow: /
+User-agent: Sidetrade indexer bot
+Disallow: /
+User-agent: TerraCotta
+Disallow: /
+User-agent: Thinkbot
+Disallow: /
+User-agent: TikTokSpider
+Disallow: /
+User-agent: Timpibot
+Disallow: /
+User-agent: VelenPublicWebCrawler
+Disallow: /
+User-agent: WARDBot
+Disallow: /
+User-agent: Webzio-Extended
+Disallow: /
+User-agent: wpbot
+Disallow: /
+User-agent: YaK
+Disallow: /
+User-agent: YandexAdditional
+Disallow: /
+User-agent: YandexAdditionalBot
+Disallow: /
+User-agent: YouBot
+Disallow: /
+
+# 2. RULES FOR STANDARD SEARCH ROBOTS (ALLOWED)
+# These rules apply to ALL other robots not specifically listed above (e.g., Googlebot, Bingbot).
 User-agent: *
 Disallow: /wp-admin/
 Allow: /wp-admin/admin-ajax.php
-
-# RULES FOR ARTIFICIAL INTELLIGENCE ROBOTS
-User-agent: AddSearchBot
-User-agent: AI2Bot
-User-agent: Ai2Bot-Dolma
-User-agent: aiHitBot
-User-agent: AmazonBuyForMe
-User-agent: atlassian-bot
-User-agent: amazon-kendra-
-User-agent: Amazonbot
-User-agent: Andibot
-User-agent: Anomura
-User-agent: anthropic-ai
-User-agent: Applebot
-User-agent: Applebot-Extended
-User-agent: Awario
-User-agent: bedrockbot
-User-agent: bigsur.ai
-User-agent: Bravebot
-User-agent: Brightbot 1.0
-User-agent: BuddyBot
-User-agent: Bytespider
-User-agent: CCBot
-User-agent: ChatGPT Agent
-User-agent: ChatGPT-User
-User-agent: Claude-SearchBot
-User-agent: Claude-User
-User-agent: Claude-Web
-User-agent: ClaudeBot
-User-agent: Cloudflare-AutoRAG
-User-agent: CloudVertexBot
-User-agent: cohere-ai
-User-agent: cohere-training-data-crawler
-User-agent: Cotoyogi
-User-agent: Crawlspace
-User-agent: Datenbank Crawler
-User-agent: DeepSeekBot
-User-agent: Devin
-User-agent: Diffbot
-User-agent: DuckAssistBot
-User-agent: Echobot Bot
-User-agent: EchoboxBot
-User-agent: FacebookBot
-User-agent: facebookexternalhit
-User-agent: Factset_spyderbot
-User-agent: FirecrawlAgent
-User-agent: FriendlyCrawler
-User-agent: Gemini-Deep-Research
-User-agent: Google-CloudVertexBot
-User-agent: Google-Extended
-User-agent: Google-Firebase
-User-agent: Google-NotebookLM
-User-agent: GoogleAgent-Mariner
-User-agent: GoogleOther
-User-agent: GoogleOther-Image
-User-agent: GoogleOther-Video
-User-agent: GPTBot
-User-agent: iaskspider/2.0
-User-agent: IbouBot
-User-agent: ICC-Crawler
-User-agent: ImagesiftBot
-User-agent: img2dataset
-User-agent: ISSCyberRiskCrawler
-User-agent: Kangaroo Bot
-User-agent: LinerBot
-User-agent: Linguee Bot
-User-agent: meta-externalagent
-User-agent: Meta-ExternalAgent
-User-agent: meta-externalfetcher
-User-agent: Meta-ExternalFetcher
-User-agent: meta-webindexer
-User-agent: MistralAI-User
-User-agent: MistralAI-User/1.0
-User-agent: MyCentralAIScraperBot
-User-agent: netEstate Imprint Crawler
-User-agent: NovaAct
-User-agent: OAI-SearchBot
-User-agent: omgili
-User-agent: omgilibot
-User-agent: OpenAI
-User-agent: Operator
-User-agent: PanguBot
-User-agent: Panscient
-User-agent: panscient.com
-User-agent: Perplexity-User
-User-agent: PerplexityBot
-User-agent: PetalBot
-User-agent: PhindBot
-User-agent: Poseidon Research Crawler
-User-agent: QualifiedBot
-User-agent: QuillBot
-User-agent: quillbot.com
-User-agent: SBIntuitionsBot
-User-agent: Scrapy
-User-agent: SemrushBot-OCOB
-User-agent: SemrushBot-SWA
-User-agent: ShapBot
-User-agent: Sidetrade indexer bot
-User-agent: TerraCotta
-User-agent: Thinkbot
-User-agent: TikTokSpider
-User-agent: Timpibot
-User-agent: VelenPublicWebCrawler
-User-agent: WARDBot
-User-agent: Webzio-Extended
-User-agent: wpbot
-User-agent: YaK
-User-agent: YandexAdditional
-User-agent: YandexAdditionalBot
-User-agent: YouBot
-Disallow: /
+Disallow: /wp-content/plugins/
+Disallow: /wp-content/cache/
+Disallow: /wp-content/themes/*.zip
+Allow: /wp-content/uploads/
 ```

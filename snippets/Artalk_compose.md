@@ -1,4 +1,4 @@
-# Aertalk compose
+# Artalk compose
 
 Fichier "docker-compose.yml" à utiliser pour déployer Artalk via Docker
 

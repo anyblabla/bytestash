@@ -1,4 +1,4 @@
-# Filtres DNS + règles par Zogg
+# Filtres DNS par Zogg
 
 Filtres de blocage DNS pour les solutions de blocage telles que AdGuard Home, PiHole, GoAway, Technitium, etc. Est fourni avec un ensemble de règles de filtrage personnalisées.
 Les filtres et les règles sont fournis par  Zogg :

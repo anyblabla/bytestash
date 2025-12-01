@@ -1,4 +1,4 @@
-# Nginx Proxy Manager open-appsec (gestion NPM WebUI) compose
+# Nginx Proxy Manager open-appsec WebUI compose
 
 Fichier "docker-compose.yml" à utiliser pour déployer Nginx Proxy Manager open-appsec (gestion NPM WebUI) via Docker.
 

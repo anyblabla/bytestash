@@ -1,4 +1,4 @@
-# Emmabuntus dock sous Emmabuntus DE3 1.00 | patch correctif
+# Emmabuntus dock sous Emmabuntus DE3 1_00 - patch
 
 En rapport avec une vidéo publié sur PeerTube Blabla Linux : https://peertube.blablalinux.be/w/oigfQeX636BXp8LPZVfxog
 

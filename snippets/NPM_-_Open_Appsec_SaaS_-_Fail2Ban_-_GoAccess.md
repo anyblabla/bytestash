@@ -1,6 +1,6 @@
-# NPM / Open Appsec Local / Fail2Ban / GoAccess
+# NPM - Open Appsec SaaS - Fail2Ban - GoAccess
 
-Fichier "docker-compose.yml" à utiliser pour déployer l'ensemble NPM, Open Appsec, Fail2Ban et GoAcces via Docker.
+Fichier "docker-compose.yml" à utiliser pour déployer l'enble NPM, Open Appsec, Fail2Ban et GoAcces via Docker.
 
 • compose
 • docker
@@ -15,7 +15,7 @@ Fichier "docker-compose.yml" à utiliser pour déployer l'ensemble NPM, Open App
 services:
   appsec-npm:
     container_name: npm-attachment
-    image: 'ghcr.io/openappsec/nginx-proxy-manager-attachment:latest'
+    image: 'ghcr.io/openappsec/nginx-proxy-manager-centrally-managed-attachment:latest'
     ipc: host
     restart: always
     ports:
@@ -29,8 +29,6 @@ services:
       - ./npm-data:/data
       - ./npm-letsencrypt:/etc/letsencrypt
       - ./npm-logrotate.custom:/etc/logrotate.d/nginx-proxy-manager
-      - ./appsec-logs:/ext/appsec-logs
-      - ./appsec-localconfig:/ext/appsec
     healthcheck:
       test: ["CMD", "/usr/bin/check-health"]
       interval: 10s
@@ -39,19 +37,17 @@ services:
   appsec-agent:
     container_name: appsec-agent
     image: 'ghcr.io/openappsec/agent:latest'
-    network_mode: service:appsec-npm
     ipc: host
     restart: always
     environment:
       - user_email=amaury-libert@hotmail.com
       - nginxproxymanager=true
-      - autoPolicyLoad=true
     volumes:
       - ./appsec-config:/etc/cp/conf
       - ./appsec-data:/etc/cp/data
       - ./appsec-logs:/var/log/nano_agent
-      - ./appsec-localconfig:/ext/appsec
-    command: /cp-nano-agent --standalone
+      - ./open-appsec-advance-model/open-appsec-advanced-model.tgz:/advanced-model/open-appsec-advanced-model.tgz:rw # fichier disponible sur le cloud NextCloud Blabla Linux (https://nextcloud.blablalinux.be/s/72qwrAqXt3Fzn7F) ou se votre compte (https://my.openappsec.io)
+    command: /cp-nano-agent --token <TOKEN>
 
   fail2ban:
     image: crazymax/fail2ban:latest

@@ -1,4 +1,4 @@
-# Script de mise à jour de Proxmox Backup Server par Cron avec notification Gotify
+# Script update Proxmox Backup Server par Cron avec notification Gotify
 
 Script Cron pour mise à jour Proxmox Backup Server : Automatisez apt-get dist-upgrade sur votre PBS et recevez une notification immédiate via Gotify en cas de succès ou d'échec. Inclut les pré-requis curl.
 

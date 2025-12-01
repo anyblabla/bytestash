@@ -1,4 +1,4 @@
-# Mise à jour automatique des hôtes Proxmox VE
+# Update automatique Proxmox VE
 
 Script Bash pour automatiser la mise à jour des hôtes Proxmox VE.
 

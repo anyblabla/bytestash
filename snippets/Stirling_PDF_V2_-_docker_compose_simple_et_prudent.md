@@ -1,4 +1,4 @@
-# Stirling PDF V2 (docker-compose simple et prudent)
+# Stirling PDF V2 - docker compose simple et prudent
 
 Fichier "docker-compose.yml" à utiliser pour déployer Stirling PDF V2 via Docker.
 

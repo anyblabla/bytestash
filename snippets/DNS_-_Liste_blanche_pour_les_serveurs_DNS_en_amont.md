@@ -1,4 +1,4 @@
-# DNS - Liste blanche complète pour les serveurs DNS en amont
+# DNS - Liste blanche pour les serveurs DNS en amont
 
 Si vous utilisez des listes restrictives dans votre solution réseau qui bloque les publicités et les traqueurs (AdGuard Home, PiHole, GoAway, Technitium, etc.), il ne faut pas oublier de laisser passer les principales adresses des serveurs DNS en amont.
 

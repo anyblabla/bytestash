@@ -1,4 +1,4 @@
-# Script de mise à jour d'Ubuntu Server par Cron avec notification Gotify
+# Script update Ubuntu Server par Cron avec notification Gotify
 
 Script Cron pour mise à jour Ubuntu : Automatisez apt-get upgrade et snap refresh sur votre serveur Ubuntu. Recevez une notification immédiate via Gotify en cas de succès ou d'échec de la mise à jour.
 

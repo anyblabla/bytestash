@@ -1,4 +1,4 @@
-# Script de mise à jour de Proxmox VE par Cron avec notification Gotify
+# Script update Proxmox VE par Cron avec notification Gotify
 
 Script Cron pour mise à jour Proxmox VE : Automatisez apt-get dist-upgrade et recevez une notification immédiate via Gotify en cas de succès ou d'échec. Inclut les pré-requis curl.
 

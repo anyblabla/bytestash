@@ -1,4 +1,4 @@
-# Automatisation des mises à jour Proxmox (LXC et VM)
+# Automatisation update Proxmox - LXC VM
 
 Ces scripts Bash permettent d'automatiser la mise à jour des conteneurs LXC et des machines virtuelles (VM) basées sur Debian/Ubuntu sur votre hôte Proxmox VE.
 

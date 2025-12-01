@@ -1,4 +1,4 @@
-# NPM (Nginx Proxy Manager) - Default "Custom locations" / "Advanced"
+# NPM - Nginx Proxy Manager - Default - Custom locations - Advanced
 
 Exemple de configuration par défaut pour les onglets "Custom locations" et "Advanced", qui peut convenir pour n'importe quel "Proxy Host" dans NPM (Nginx Proxy Manager).
 

@@ -1,4 +1,4 @@
-# Filtres DNS + règles par Zogg - AMÉLIORATIONS
+# Filtres DNS par Zogg - optimisations
 
 Le fichier ci-dessous (AdGuardHome.yml) est une amélioration visuelle de l'extrait de code suivant...
 - Filtres DNS + règles par Zogg :  https://bytestash.blablalinux.be/s/63f9dbd484fe8e4cb489ab1224f6e688

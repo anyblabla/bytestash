@@ -1,4 +1,4 @@
-# Uptime Kuma compose
+# UptimeKuma compose
 
 Fichier "docker-compose.yml" à utiliser pour déployer Uptime Kuma via Docker.
 

@@ -1,4 +1,4 @@
-# Fail2ban compose (amélioration/optimisations)
+# Fail2ban compose - optimisations
 
 Fichier "docker-compose.yml" à utiliser pour déployer Fail2ban via Docker. Exemple prévu pour analyser les logs de NPM (Nginx Proxy Manager).
 

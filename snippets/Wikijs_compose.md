@@ -1,4 +1,4 @@
-# Wiki.js compose
+# Wikijs compose
 
 Fichier "docker-compose.yml" à utiliser pour déployer Wiki.js via Docker.
 

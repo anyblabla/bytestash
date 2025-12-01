@@ -1,4 +1,4 @@
-# Wiki.js robots.txt
+# Wikijs robots txt
 
 Exemple de fichier robots.txt pour Wiki.js. 
 Ce fichier robot.txt spécifie :

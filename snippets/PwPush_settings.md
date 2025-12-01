@@ -1,4 +1,4 @@
-# PwPush (Password Pusher) settings
+# PwPush settings
 
 Fichier de configuration par défaut de PWPush.
 

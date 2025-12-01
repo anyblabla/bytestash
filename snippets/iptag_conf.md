@@ -1,4 +1,4 @@
-# iptag.conf
+# iptag conf
 
 Le script IP-Tag applique automatiquement des balises basées sur IP aux conteneurs LXC et aux machines virtuelles dans Proxmox VE. Cela vous permet d'identifier rapidement les machines par IP (ou IP partielle) directement dans l'interface utilisateur Web de Proxmox.
 

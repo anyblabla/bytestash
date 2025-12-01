@@ -1,4 +1,4 @@
-# Mise à jour automatique des serveurs Ubuntu par Cron
+# Update automatique des serveurs Ubuntu par Cron
 
 Ce guide explique comment automatiser la mise à jour des paquets de votre serveur Ubuntu (APT et Snap) en utilisant un script Bash planifié via une tâche Cron.
 

@@ -1,4 +1,4 @@
-# Nginx Proxy Manager open-appsec (gestion central WebUI-SaaS) compose
+# Nginx Proxy Manager open-appsec Saas compose
 
 Fichier "docker-compose.yml" à utiliser pour déployer Nginx Proxy Manager open-appsec (gestion central WebUI-SaaS) via Docker.
 
