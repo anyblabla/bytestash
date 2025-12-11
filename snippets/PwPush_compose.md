@@ -15,7 +15,7 @@ Fichier "docker-compose.yml" à utiliser pour déployer PwPush (Password Pusher)
 services:
   # Base de données PostgreSQL
   db:
-    image: postgres:13-alpine
+    image: postgres:16-alpine
     restart: always
     container_name: postgres
     # Le port 5432 n'est généralement pas nécessaire d'être exposé au public (ports: 5432:5432 a été retiré)
