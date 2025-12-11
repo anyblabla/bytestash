@@ -11,7 +11,6 @@ Fichier "docker-compose.yml" à utiliser pour déployer PwPush (Password Pusher)
 
 ```yaml
 # Modifications apportées par Blabla Linux : https://link.blablalinux.be
-version: '3.8'
 
 services:
   # Base de données PostgreSQL
