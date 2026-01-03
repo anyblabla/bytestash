@@ -1,17 +1,21 @@
-# Fastfetch - config.jsonc
+# Fastfetch Classic - config.jsonc
 
 Fichier de configuration config.jsonc pour Fastfetch, conçu pour offrir un diagnostic système complet en un coup d'œil.
 
 Points forts :
+- Alignement vertical parfait des flèches pour une lisibilité accrue.
+- Support hybride : Formatage propre pour les configurations GPU Intel/AMD.
+- Monitoring : Affichage de la température CPU, de l'IP locale (IPv4) et de l'état de la batterie.
+- Polyvalent : Identifie précisément l'OS, le noyau, l'environnement de bureau (DE/WM) et les thèmes.
+- Format JSONC : Permet l'ajout de commentaires pour une personnalisation facile.
+- Idéal pour les techniciens et les administrateurs système sous environnement Debian/Ubuntu.
 
-Alignement vertical parfait des flèches pour une lisibilité accrue.
-Support hybride : Formatage propre pour les configurations GPU Intel/AMD.
-Monitoring : Affichage de la température CPU, de l'IP locale (IPv4) et de l'état de la batterie.
-Polyvalent : Identifie précisément l'OS, le noyau, l'environnement de bureau (DE/WM) et les thèmes.
-Format JSONC : Permet l'ajout de commentaires pour une personnalisation facile.
-Idéal pour les techniciens et les administrateurs système sous environnement Debian/Ubuntu.
+Usage :
+- Placer le fichier dans ~/.config/fastfetch/config.jsonc Exécuter la commande : fastfetch
 
-Usage : Placer le fichier dans ~/.config/fastfetch/config.jsonc Exécuter la commande : fastfetch
+• fastfetch
+• jsonc
+• fetch
 
 ```json
 // # Modifications apportées par Blabla Linux : https://link.blablalinux.be
