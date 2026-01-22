@@ -1,23 +1,28 @@
 # Termix compose
 
-Fichier "docker-compose.yml" à utiliser pour déployer Termix via Docker.
+Ce fichier docker-compose.yml permet de déployer Termix, un terminal web léger et performant. Cette configuration inclut la persistance des données dans un volume local et expose l'interface sur le port 8080. Idéal pour accéder à un terminal via un navigateur sur vos serveurs Debian, Ubuntu ou via une instance Proxmox.
 
-• shell
-• terminal
-• termix
-• ssh
-• yml
-• compose
 • docker
+• compose
+• yml
+• termix
+• shell
+• web
 
 ```yaml
 # Modifications apportées par Blabla Linux : https://link.blablalinux.be
 services:
-  app:
+  termix:
     image: ghcr.io/lukegus/termix:latest
-    container_name: termix-app
-    restart: unless-stopped
+    container_name: termix
+    restart: always
     ports:
-      - "8080:8080" # Port for nginx web-app (frontend)
-#     - "8081:8081" # Port for SSH WebSocket, does not need to be open (backend)
+      - 8080:8080
+    volumes:
+      - ./termix-data:/app/data
+    environment:
+      PORT: "8080"
+volumes:
+  termix-data:
+    driver: local
 ```
