@@ -14,8 +14,8 @@ Deux variantes de déploiement pour 2FAuth. La version "Standard" est idéale po
 services:
   2fauth:
     image: 2fauth/2fauth:latest
-    container_name: 2fauth
     restart: always
+    container_name: 2fauth
     volumes:
       - ./data:/2fauth
     ports:
@@ -25,28 +25,50 @@ services:
       - APP_ENV=local
       - APP_TIMEZONE=Europe/Brussels
       - APP_DEBUG=false
-      - SITE_OWNER=votre-email@exemple.com
-      - APP_KEY=base64:GENEREZ_VOTRE_CLE_ICI_32_CHARS # Utilisez 'php artisan key:generate'
-      - APP_URL=https://votre-url.be
-      - ASSET_URL=https://votre-url.be
-      
-      # Configuration de la base de données (SQLite par défaut)
-      - DB_DATABASE="/srv/database/database.sqlite"
-      
-      # Drivers en mode fichier (pas de container additionnel requis)
+      - SITE_OWNER=admin@example.com
+      - APP_KEY=base64:GENERATE_YOUR_OWN_KEY_HERE=
+      - APP_URL=https://2fauth.your-domain.com
+      - ASSET_URL=https://2fauth.your-domain.com
+      - IS_DEMO_APP=false
+      - LOG_CHANNEL=daily
+      - LOG_LEVEL=notice
+      - DB_DATABASE="/2fauth/database.sqlite"
+
+      # Drivers en mode local (sans Redis)
       - CACHE_DRIVER=file
       - SESSION_DRIVER=file
       - QUEUE_DRIVER=sync
-      
-      # Configuration Mail (SMTP)
+
+      # Mail settings
       - MAIL_MAILER=smtp
-      - MAIL_HOST=votre.serveur-smtp.com
+      - MAIL_HOST=smtp.your-provider.com
       - MAIL_PORT=587
-      - MAIL_USERNAME=votre-login
-      - MAIL_PASSWORD=votre-mot-de-passe
+      - MAIL_USERNAME=your-email@example.com
+      - MAIL_PASSWORD=your-app-password
       - MAIL_ENCRYPTION=tls
       - MAIL_FROM_NAME=2Fauth
-      - MAIL_FROM_ADDRESS=votre-email@exemple.com
+      - MAIL_FROM_ADDRESS=your-email@example.com
+      - MAIL_VERIFY_SSL_PEER=true
+
+      # Security & Auth
+      - THROTTLE_API=60
+      - LOGIN_THROTTLE=5
+      - AUTHENTICATION_GUARD=web-guard
+      - AUTHENTICATION_LOG_RETENTION=365
+      - WEBAUTHN_NAME=2FAuth
+      - WEBAUTHN_ID=your-domain.com
+      - WEBAUTHN_USER_VERIFICATION=preferred
+      - TRUSTED_PROXIES=*
+
+      - BROADCAST_DRIVER=log
+      - SESSION_LIFETIME=120
+      - MIX_ENV=local
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:8000/login || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
 ```
 
 ```yaml
@@ -54,10 +76,8 @@ services:
 services:
   2fauth:
     image: 2fauth/2fauth:latest
-    container_name: 2fauth
     restart: always
-    depends_on:
-      - redis
+    container_name: 2fauth
     volumes:
       - ./data:/2fauth
     ports:
@@ -66,30 +86,65 @@ services:
       - APP_NAME=2FAuth
       - APP_ENV=local
       - APP_TIMEZONE=Europe/Brussels
-      - SITE_OWNER=votre-email@exemple.com
-      - APP_KEY=base64:GENEREZ_VOTRE_CLE_ICI_32_CHARS
-      - APP_URL=https://votre-url.be
-      
-      # Utilisation de Redis pour le cache, les sessions et les files d'attente
+      - APP_DEBUG=false
+      - SITE_OWNER=admin@example.com
+      - APP_KEY=base64:GENERATE_YOUR_OWN_KEY_HERE= # Utiliser 'php artisan key:generate'
+      - APP_URL=https://2fauth.your-domain.com
+      - ASSET_URL=https://2fauth.your-domain.com
+      - IS_DEMO_APP=false
+      - LOG_CHANNEL=daily
+      - LOG_LEVEL=notice
+      - DB_DATABASE="/2fauth/database.sqlite"
+
+      # Caching & Sessions
       - CACHE_DRIVER=redis
       - SESSION_DRIVER=redis
       - QUEUE_DRIVER=redis
-      
-      # Paramètres de connexion Redis (utilise le nom du service défini plus bas)
       - REDIS_HOST=redis
+      - REDIS_PASSWORD=null
       - REDIS_PORT=6379
-      
-      # Configuration Mail
-      - MAIL_MAILER=smtp
-      - MAIL_HOST=votre.serveur-smtp.com
-      - MAIL_PORT=587
-      - MAIL_USERNAME=votre-login
-      - MAIL_PASSWORD=votre-mot-de-passe
-      - MAIL_ENCRYPTION=tls
 
-  # Container Redis ultra-léger basé sur Alpine Linux
+      # Mail settings (SMTP Example)
+      - MAIL_MAILER=smtp
+      - MAIL_HOST=smtp.your-provider.com
+      - MAIL_PORT=587
+      - MAIL_USERNAME=your-email@example.com
+      - MAIL_PASSWORD=your-app-password
+      - MAIL_ENCRYPTION=tls
+      - MAIL_FROM_NAME=2Fauth
+      - MAIL_FROM_ADDRESS=your-email@example.com
+      - MAIL_VERIFY_SSL_PEER=true
+
+      # Security & Auth
+      - THROTTLE_API=60
+      - LOGIN_THROTTLE=5
+      - AUTHENTICATION_GUARD=web-guard
+      - AUTHENTICATION_LOG_RETENTION=365
+      - WEBAUTHN_NAME=2FAuth
+      - WEBAUTHN_ID=your-domain.com
+      - WEBAUTHN_USER_VERIFICATION=preferred
+      - TRUSTED_PROXIES=*
+
+      - BROADCAST_DRIVER=log
+      - SESSION_LIFETIME=120
+      - MIX_ENV=local
+    healthcheck:
+      test: ["CMD-SHELL", "wget -q --spider http://localhost:8000/login || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+    depends_on:
+      redis:
+        condition: service_healthy
+
   redis:
     image: redis:alpine
     container_name: 2fauth_redis
     restart: always
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 ```
