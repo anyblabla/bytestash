@@ -1,4 +1,4 @@
-# Spécification OpenAPI LanguageTool - Swagger JSON
+# Specs OpenAPI LanguageTool - Swagger JSON
 
 Fichier de définition OpenAPI (Swagger) pour l'API LanguageTool. Ce fichier a été modifié pour pointer vers une instance locale/privée via le domaine languagetool.blablalinux.be. Idéal pour tester les routes /check, /languages et la gestion des dictionnaires personnels.
 

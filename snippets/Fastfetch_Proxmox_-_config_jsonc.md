@@ -20,7 +20,7 @@ Usage :
 • pve
 
 ```json
-// # Configuration Proxmox (Pixel-Perfect) - Blabla Linux
+// # Modifications apportées par Blabla Linux : https://link.blablalinux.be
 {
     "$schema": "https://github.com/fastfetch-cli/fastfetch/raw/dev/doc/json_schema.json",
     "logo": {

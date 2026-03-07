@@ -13,8 +13,9 @@ Fichier "docker-compose.yml" à utiliser pour déployer OTS (One Time Password) 
 # Modifications apportées par Blabla Linux : https://link.blablalinux.be
 services:
   app:
-    build:
-      context: https://github.com/Luzifer/ots.git#v1.17.2
+    #build:
+      #context: https://github.com/Luzifer/ots.git#v1.17.2
+    image: ghcr.io/luzifer/ots:v1.20.1
     restart: always
     container_name: ots
     environment:
