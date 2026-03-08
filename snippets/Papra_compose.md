@@ -23,7 +23,7 @@ services:
     ports:
       - "3000:1221"
     environment:
-      # Driver SQLite (LibSQL) - PostgreSQL non supporté actuellement
+      # Driver SQLite (LibSQL)
       - DATABASE_URL=file:/app/app-data/db/db.sqlite
       
       # Clé secrète pour les sessions
@@ -34,10 +34,21 @@ services:
       - APP_BASE_URL=https://votre-domaine.com
       - TRUSTED_ORIGINS=https://votre-domaine.com
 
+      # --- CONFIGURATION OCR & MAINTENANCE ---
+      # Liste des langues (fra, eng, deu, etc.)
+      - DOCUMENTS_OCR_LANGUAGES=fra,eng
+      # Durée de rétention des documents dans la corbeille
+      - DOCUMENTS_DELETED_DOCUMENTS_RETENTION_DAYS=30
+      # Limite d'upload (en octets) - ici 50 Mo
+      - DOCUMENT_STORAGE_MAX_UPLOAD_SIZE=52428800
+
+      # --- SÉCURITÉ ---
+      # Passer à 'false' impérativement après avoir créé votre compte admin
+      - AUTH_FIRST_USER_AS_ADMIN=true
+
       # --- CHIFFREMENT DES DOCUMENTS ---
       - DOCUMENT_ENCRYPTION_IS_ENABLED=true
       # Doit contenir exactement 32 caractères
-      # Générer avec : openssl rand -hex 16 (pour 32 chars hex) ou une chaîne de 32 caractères
       - DOCUMENT_ENCRYPTION_KEY=votre_cle_de_32_caracteres_ici
       # ---------------------------------
 
