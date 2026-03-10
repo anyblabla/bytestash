@@ -8,209 +8,75 @@ Fichier "docker-compose.yml" à utiliser pour déployer LittleLink-Server via Do
 • link
 
 ```yaml
-# Modifications apportées par Blabla Linux : https://link.blablalinux.be
-# Cet extrait à fait l'objet d'une vidéo sur PeerTube Blabla Linux disponible à cette adresse : https://peertube.blablalinux.be/w/qcUnPY87GEbuAjiyMxP3s7
-# Documentation disponible à cette adresse: https://github.com/techno-tim/littlelink-server/tree/master
+# ------------------------------------------------------------------------------
+# Service      : LittleLink Server (Version BlablaLinux)
+# Auteur       : Amaury aka BlablaLinux
+# Modifications : https://link.blablalinux.be
+# Vidéo Démo   : https://peertube.blablalinux.be/w/qcUnPY87GEbuAjiyMxP3s7
+# Documentation : https://github.com/techno-tim/littlelink-server/tree/master
+# Description   : Configuration optimisée en mode "Full Custom" pour un contrôle 
+#                 total de l'ordre, du design et de l'accessibilité.
+# ------------------------------------------------------------------------------
+
 services:
   littlelink-server:
     image: ghcr.io/techno-tim/littlelink-server:latest
     container_name: littlelink-server
+    
+    # --- CONFIGURATION DE L'INTERFACE ---
     environment:
-      - META_TITLE=Blabla Linux
-      - META_DESCRIPTION=Administrateur système 🇧🇪 Multi-serveurs à domicile ♻️ Expert 💻 Réemploi 🐧 Créateur de contenu 🇫🇷 Linux
-      - META_AUTHOR=Blabla Linux
-      - META_KEYWORDS=Administrateur, Serveur, Expert, Réemploi, Créateur, Linux
+      - META_TITLE=BlablaLinux
+      - META_DESCRIPTION=Page de liens BlablaLinux
+      - META_AUTHOR=BlablaLinux
+      - META_KEYWORDS=Auto-hébergement, Créateur, Réemploi, Proxmox, AdminSys
       - LANG=fr
-      - META_INDEX_STATUS=all
       - THEME=Dark
-      - FAVICON_URL=https://blablalinux.be/wp-content/uploads/2025/03/favicon-littlelink-server.png
-      - AVATAR_URL=https://blablalinux.be/wp-content/uploads/2025/03/logo-littlelink-server.png
-      - AVATAR_2X_URL=https://blablalinux.be/wp-content/uploads/2025/03/logo-x2-littlelink-server.png
-      - AVATAR_ALT=Blabla Linux profils sociaux et services autohébergés
-      - NAME=Blabla Linux
-      - BIO=Administrateur système 🇧🇪 Multi-serveurs à domicile ♻️ Expert 💻 Réemploi 🐧 Créateur de contenu 🇫🇷 Linux
-      - BUTTON_ORDER=FACEBOOK,INSTAGRAM,THREADS,TWITTER,BLUESKY,MASTODON,YOUTUBE,WORDPRESS
-      - TWITTER=https://yourls.blablalinux.be/twitter
-      - YOUTUBE=https://yourls.blablalinux.be/youtube
-      - FACEBOOK=https://yourls.blablalinux.be/facebook
-      - INSTAGRAM=https://yourls.blablalinux.be/instagram
-      - THREADS=https://yourls.blablalinux.be/threads
-      - BLUESKY=https://yourls.blablalinux.be/bluesky
-      - MASTODON=https://yourls.blablalinux.be/mastodon
-      - QWICE=https://yourls.blablalinux.be/qwice
-      - WORDPRESS=https://yourls.blablalinux.be/blog
-      - CUSTOM_BUTTON_TEXT=Qwice,PeerTube,Services,Cyberlettre,Mail MOI !
-      - CUSTOM_BUTTON_URL=https://yourls.blablalinux.be/qwice,https://yourls.blablalinux.be/peertube,https://yourls.blablalinux.be/uptime-kuma,https://yourls.blablalinux.be/cyberlettre,https://yourls.blablalinux.be/contact
-      - CUSTOM_BUTTON_COLOR=#5587d6,#f26d15,#0d1117,#e85be9,#000000
-      - CUSTOM_BUTTON_TEXT_COLOR=#ffffff,#ffffff,#ffffff,#ffffff,#ffffff
-      - CUSTOM_BUTTON_ALT_TEXT=Qwice,PeerTube,Services publics auto-hébergés,Cyberlettre (newsletter PeerTube/WordPress/Wiki),Mail MOI !
-      - CUSTOM_BUTTON_NAME=Qwice,PeerTube,Services,Cyberlettre,Mail MOI !
-      - CUSTOM_BUTTON_ICON=fa-solid fa-user,fa-solid fa-video,fa-solid fa-server,fa-solid fa-square-rss,fa-solid fa-envelope
-      - FOOTER=Blabla Linux © 2025
+      
+      # --- AVATAR ET IDENTITÉ ---
+      - FAVICON_URL=https://i0.wp.com/blablalinux.be/wp-content/uploads/2025/12/favicon-littlelink-server.jpg
+      - AVATAR_URL=https://i0.wp.com/blablalinux.be/wp-content/uploads/2025/12/logo-littlelink-server.jpg
+      - AVATAR_2X_URL=https://i0.wp.com/blablalinux.be/wp-content/uploads/2025/12/logo-x2-littlelink-server.jpg
+      - AVATAR_ALT=BlablaLinux profils sociaux et services autohébergés
+      - NAME=BlablaLinux
+      - BIO=🐧 Admin système passionné 🖥️ Spécialiste virtualisation Proxmox & Open Source 🚀
+      
+      # --- GESTION DES BOUTONS (MODE CUSTOM) ---
+      # On force l'ordre uniquement sur "CUSTOM" pour ignorer les boutons par défaut
+      - BUTTON_ORDER=CUSTOM
+      
+      # Liste des noms internes, textes affichés et liens cibles
+      - CUSTOM_BUTTON_NAME=Services,Wiki.js,PeerTube,YouTube,WordPress,Cyberlettre,GitHub,Gitea,Matrix,Bluesky,Mastodon,Twitter,Facebook,Tipeee,Emmabuntus,Contactez-moi !
+      - CUSTOM_BUTTON_TEXT=Services,Wiki.js,PeerTube,YouTube,WordPress,Cyberlettre,GitHub,Gitea,Matrix,Services,Wiki.js,PeerTube,Emmabuntus,Cyberlettre,Tipeee,Contactez-moi !
+      - CUSTOM_BUTTON_URL=https://blablalinux.be/mes-services-publics,https://wiki.blablalinux.be,https://peertube.blablalinux.be/a/blablalinux/videos,https://www.youtube.com/@blablalinux,https://blablalinux.be,https://blablalinux.be/la-cyberlettre,https://github.com/anyblabla,https://gitea.blablalinux.be/blablalinux,https://matrixto.blablalinux.be/#/@blablalinux:blablalinux.be,https://bsky.app/profile/blablalinux.be,https://mastodon.blablalinux.be/@blablalinux,https://x.com/BlablaLinux,https://www.facebook.com/blablalinux,https://fr.tipeee.com/blablalinux/,https://emmabuntus.org,https://blablalinux.be/contact
+      
+      # --- DESIGN ET ACCESSIBILITÉ ---
+      # Couleurs des boutons (Fond et Texte)
+      - CUSTOM_BUTTON_COLOR=#1e3a8a,#3b82f6,#f26d15,#FF0000,#21759b,#9333ea,#333333,#609926,#000000,#0085ff,#2b90d9,#1DA1F2,#1877F2,#ed1e3f,#ffcc00,#1a1a1a
+      - CUSTOM_BUTTON_TEXT_COLOR=#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#ffffff,#000000,#ffffff
+      
+      # Textes alternatifs (SEO & Accessibilité)
+      - CUSTOM_BUTTON_ALT_TEXT=Accéder à la liste complète de mes services publics,Consulter le Wiki technique de BlablaLinux,Voir mes vidéos sur mon instance PeerTube,S'abonner à la chaîne YouTube BlablaLinux,Visiter le blog officiel BlablaLinux,S'abonner à la Cyberlettre pour rester informé,Consulter mes dépôts de code sur GitHub,Accéder à mon instance Gitea personnelle,Me rejoindre sur le réseau de communication Matrix,Retrouver BlablaLinux sur Bluesky,Suivre mes actualités sur Mastodon,Suivre BlablaLinux sur X (ex-Twitter),Rejoindre la communauté BlablaLinux sur Facebook,Soutenir financièrement mon travail sur Tipeee,Soutenir le collectif Emmabuntüs,M'envoyer un message ou me contacter
+      
+      # Icônes FontAwesome
+      - CUSTOM_BUTTON_ICON=fa-solid fa-server,fa-solid fa-book-open,fa-solid fa-video,fa-brands fa-youtube,fa-brands fa-wordpress,fa-solid fa-paper-plane,fa-brands fa-github,fa-solid fa-code-branch,fa-solid fa-comments,fa-brands fa-bluesky,fa-brands fa-mastodon,fa-brands fa-x-twitter,fa-brands fa-facebook,fa-solid fa-heart,fa-brands fa-debian,fa-solid fa-envelope
+      
+      # --- FOOTER ET ANALYTICS ---
+      - FOOTER=BlablaLinux © 2025-Présent
+      - GA_TRACKING_ID=G-XXXXXXXXXX # <--- Remplacez par votre ID Google Analytics réel
+      - SKIP_HEALTH_CHECK_LOGS=true
+      
+    # --- RÉSEAU ET SÉCURITÉ ---
     ports:
-      - 8080:3000
+      - 8080:3000 # Accès via http://IP_SERVEUR:8080
     restart: always
     security_opt:
       - no-new-privileges:true
-```
-
-```yaml
-services:
-  little-link:
-    image: ghcr.io/techno-tim/littlelink-server:latest
-    # dockerhub is also supported timothystewart6/littlelink-server
-    #image: timothystewart6/littlelink-server:latest
-    container_name: littlelink-server
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    environment:
-      - META_TITLE=Techno Tim
-      - META_DESCRIPTION=Techno Tim Link page
-      - META_AUTHOR=Techno Tim
-      - META_KEYWORDS=HomeLab, CSS, HTML, Engineering
-      - LANG=en
-      - META_INDEX_STATUS=all
-      - THEME=Dark
-      - FAVICON_URL=https://pbs.twimg.com/profile_images/1286144221217316864/qIAsKOpB_200x200.jpg
-      - AVATAR_URL=https://pbs.twimg.com/profile_images/1286144221217316864/qIAsKOpB_200x200.jpg
-      - AVATAR_2X_URL=https://pbs.twimg.com/profile_images/1286144221217316864/qIAsKOpB_400x400.jpg
-      - AVATAR_ALT=Techno Tim Profile Pic
-      - NAME=TechnoTim
-      - BIO=Hey! Just a place where you can connect with me!
-      - FOOTER=Thanks for stopping by!
-      - GITHUB=https://github.com/timothystewart6
-      - TWITTER=https://twitter.com/TechnoTimLive
-      - INSTAGRAM=https://www.instagram.com/techno.tim
-      - YOUTUBE=https://www.youtube.com/channel/UCOk-gHyjcWZNj3Br4oxwh0A
-      - TWITCH=https://www.twitch.tv/technotim/
-      - DISCORD=https://l.technotim.live/discord
-      - TIKTOK=https://www.tiktok.com/@technotim
-      - KIT=https://kit.co/TechnoTim
-      - FACEBOOK=https://facebook.com
-      - FACEBOOK_MESSENGER=https://facebook.com
-      - LINKED_IN=https://linkedin.com
-      - PRODUCT_HUNT=https://www.producthunt.com/
-      - SNAPCHAT=https://www.snapchat.com/
-      - SPOTIFY=https://www.spotify.com/
-      - REDDIT=https://www.reddit.com/
-      - MEDIUM=https://medium.com
-      - PINTEREST=https://www.pinterest.com/
-      - EMAIL=you@example.com
-      - EMAIL_TEXT=Email Me!
-      - EMAIL_ALT=you@example.com
-      - EMAIL_ALT_TEXT=Email me!
-      - SOUND_CLOUD=https://soundcloud.com
-      - FIGMA=https://figma.com
-      - TELEGRAM=https://telegram.org/
-      - TUMBLR=https://www.tumblr.com/
-      - STEAM=https://steamcommunity.com/
-      - VIMEO=https://vimeo.com/
-      - WORDPRESS=https://wordpress.com/
-      - GOODREADS=https://www.goodreads.com/
-      - SKOOB=https://www.skoob.com.br/
-      - LETTERBOXD=https://letterboxd.com/
-      - MASTODON=https://mastodon.social/
-      - MICRO_BLOG=https://micro.blog/
-      - WHATSAPP=https://www.whatsapp.com/
-      - STRAVA=https://www.strava.com/
-      - BLUESKY=https://bsky.app/profile/bsky.app
-      - BUYMEACOFFEE=https://www.buymeacoffee.com/
-      - GITLAB=https://www.gitlab.com/
-      - PATREON=https://www.patreon.com/technotim
-      - DEVTO=https://dev.to/
-      - UMAMI_WEBSITE_ID=xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
-      - UMAMI_APP_URL=https://your-umami-app.com
-      - UMAMI_SCRIPT_NAME=script.js
-      - BUTTON_ORDER=YOUTUBE,TWITCH,TWITTER,GITHUB,INSTAGRAM,DISCORD,FACEBOOK,TIKTOK,KIT,PATREON
-      - PAYPAL=https://www.paypal.me/user
-      - SLACK=https://slack.com/
-      - STACKOVERFLOW=https://stackoverflow.com/
-      - LASTFM=https://last.fm/
-      - GITEA=https://gitea.io/
-      - POLYWORK=https://www.polywork.com/
-      - SIGNAL=https://signal.org/
-      - UNTAPPD=https://untappd.com/
-      - BUTTON_TARGET=_blank
-      - INSTANTGAMING=https://www.instant-gaming.com/
-      - GHOST=https://ghost.org/
-      - TRAKT=https://trakt.tv
-      - CASHAPP=https://cash.app/
-      - TEESPRING=https://teespring.com/
-      - XING=https://www.xing.com/en
-      - KEYBASE=https://keybase.io/
-      - ONLYFANS=https://onlyfans.com/
-      - SESSION=https://getsession.org/
-      - THREEMA=https://threema.ch/en/
-      - STREAMLABS=https://streamlabs.com/
-      - PRIVATEBIN=https://privatebin.net/
-      - AMAZON_AFFILIATE=https://affiliate-program.amazon.co.uk/
-      - AMAZON_WISHLIST=https://www.amazon.co.uk/b?node=22758010031
-      - APPLE_MUSIC=https://www.apple.com/uk/apple-music/
-      - YOUTUBE_MUSIC=https://music.youtube.com/playlist?list=
-      - VENMO=https://venmo.com/
-      - STATUS=https://status.im/
-      - MATRIX=https://matrix.to/
-      - ANILIST=https://anilist.co/
-      - GITBUCKET=https://gitbucket.github.io/
-      - SHAZAM=https://www.shazam.com/myshazam
-      - TPDB=https://theposterdb.com/
-      - FLICKR=https://www.flickr.com/
-      - OSU=https://osu.ppy.sh/users/
-      - LINE=https://line.me/en/
-      - KAKAOTALK=https://www.kakaocorp.com/page/service/service/KakaoTalk?lang=ko
-      - DESIGNBYHUMANS=https://www.designbyhumans.com/
-      - DOCKERHUB=https://hub.docker.com/
-      - VERO=https://vero.co/
-      - MYANIMELIST=https://myanimelist.net/
-      - OG_SITE_NAME=Techno Tim Live (OG)
-      - OG_TITLE=Techno Tim (OG)
-      - OG_DESCRIPTION=Techno Tim Link page (OG)
-      - OG_URL=https://technotim.live/
-      - OG_IMAGE=https://pbs.twimg.com/profile_images/1286144221217316864/qIAsKOpB_400x400.jpg
-      - OG_IMAGE_WIDTH=400
-      - OG_IMAGE_HEIGHT=400
-      - TWITTER_CARD=summary_large_image
-      - TWITTER_IMAGE=https://pbs.twimg.com/profile_images/1286144221217316864/qIAsKOpB_400x400.jpg
-      - TWITTER_SITE=@TechnoTimLive
-      - TWITTER_CREATOR=@TechnoTimLive
-      - SHARE=https://technotim.live
-      - FIVEHUNDREDPX=https://500px.com/
-      - PRINTABLES=https://www.printables.com
-      - SERIALIZD=https://www.serializd.com/
-      - LEMMY=https://join-lemmy.org
-      - PIXELFED=https://pixelfed.org/
-      - VRCHAT=https://vrchat.com
-      - X=https://x.com
-      - CODEWARS=https://www.codewars.com
-      - APPLE_PODCASTS=https://podcasts.apple.com/de/podcast/NAME/id000000000
-      - GOOGLE_PODCASTS=https://podcasts.google.com/feed/XYZ
-      - POCKET_CASTS=https://pca.st/XYZ
-      - OVERCAST=https://overcast.fm/itunes00000000
-      - RSS=https://example.com/rss
-      - AUDIUS=https://audius.co/
-      - BANDCAMP=https://bandcamp.com/
-      - FORGEJO=https://forgejo.org/
-      - ORCID=https://orcid.org/
-      - CREDLY=https://www.credly.com/
-      - SEMANTICSCHOLAR=https://www.semanticscholar.org/
-      - GOOGLESCHOLAR=https://scholar.google.co.uk/
-      - SIMPLEX=https://simplex.chat/
-      - MIXCLOUD=https://www.mixcloud.com/
-      - INTERNETARCHIVE=https://archive.org/
-      - GOOGLEMAPS=https://www.google.com/maps
-      - TIDAL=https://tidal.com/
-      - THESTORYGRAPH=https://www.thestorygraph.com/
-      - GEOCACHING=https://www.geocaching.com/play
-      - NEOCITIES=https://neocities.org/
-      - VIBER=https://www.viber.com/en/
-      - SPACEHEY=https://spacehey.com/
-      - DREAMWIDTH=https://www.dreamwidth.org/login
-      - PILLOWFORT=https://www.pillowfort.social/log_in
-      - MAKERWORLD=https://makerworld.com/en
-    ports:
-      - 8080:3000
-    restart: unless-stopped
-    security_opt:
-      - no-new-privileges:true
+      
+    # --- TEST DE SANTÉ ---
+    healthcheck:
+      test: ["CMD-SHELL", "wget --quiet --tries=1 --spider http://localhost:3000 || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
 ```
