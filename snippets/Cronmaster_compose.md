@@ -34,11 +34,15 @@ services:
       - "40123:3000"
     environment:
       - NODE_ENV=production
-      #- APP_URL=https://cronmaster.blablalinux.be # URL de base pour la redirection OIDC
-      - LOCALE=fr # Langue de l'interface (supporte fr.json)
+      #- APP_URL=https://cronmaster.blablalinux.be # URL publique de votre instance Cronmaster
+      - LOCALE=en # Langue de l'interface (le français arrive bientôt via ma Pull Request #97)
       - HOME=/home
       - AUTH_PASSWORD=CHANGER_VOTRE_MOT_DE_PASSE_ICI # Mot de passe d'accès à l'interface
-      - HOST_CRONTAB_USER=root,any # Définit les utilisateurs autorisés à gérer les crontabs
+      # La variable HOST_CRONTAB_USER définit qui peut gérer les crontabs :
+      # - "root" est obligatoire pour les tâches cron système.
+      # - Ajoutez vos propres utilisateurs système (ex: "root,blablalinux") pour gérer leurs crontabs respectifs.
+      # - "blablalinux" est ici mon nom d'utilisateur sur le serveur.
+      - HOST_CRONTAB_USER=root,blablalinux
       - NEXT_PUBLIC_CLOCK_UPDATE_INTERVAL=30000
       - LIVE_UPDATES=true
       - DISABLE_SYSTEM_STATS=false
@@ -54,4 +58,9 @@ services:
     privileged: true # Nécessaire pour les permissions de lecture/écriture des crontabs
     restart: always # My restart will always be.
     init: true
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3000"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 ```

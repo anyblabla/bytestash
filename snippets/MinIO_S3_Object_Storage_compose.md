@@ -12,7 +12,7 @@ Fichier "docker-compose.yml" à utiliser pour déployer MinIO S3 Object Storage 
 services:
   minio:
     container_name: minio
-    image: 'minio/minio:latest'
+    image: 'pgsty/minio:latest'
     restart: always
     ports:
       - "9000:9000"
