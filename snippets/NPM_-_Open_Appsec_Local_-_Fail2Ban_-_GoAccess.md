@@ -43,7 +43,7 @@ services:
     ipc: host
     restart: always
     environment:
-      - user_email=amaury-libert@hotmail.com
+      - user_email= # votre adresse email
       - nginxproxymanager=true
       - autoPolicyLoad=true
     volumes:
